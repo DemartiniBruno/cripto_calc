@@ -20,6 +20,31 @@ var inputs_criados = [
         price:0,
         qtd:0.5
     },
+    {
+        moeda:0,
+        price:0,
+        qtd:0.5
+    },
+    {
+        moeda:0,
+        price:0,
+        qtd:0.5
+    },
+    {
+        moeda:0,
+        price:0,
+        qtd:0.5
+    },
+    {
+        moeda:0,
+        price:0,
+        qtd:0.5
+    },
+    {
+        moeda:0,
+        price:0,
+        qtd:0.5
+    }
 ]
 
 window.onload = function () {
@@ -43,6 +68,9 @@ const renderizar_calculadora = () => {
     // btn_novo.textContent("Teste")
     btn_novo.innerText = "+"
     btn_novo.value = "novo"
+    btn_novo.onclick = () =>{
+        criar_novo_input()
+    }
 
     const teste = (renderizar_inputs())
 
@@ -59,7 +87,8 @@ const renderizar_inputs = () =>{
     
     inputs_criados.forEach(input=>{
 
-        const input_teste = documento.createElement("div")
+        const input_local = document.createElement("div")
+        input_local.classList.add("input_local")
 
         const input_moeda = document.createElement("select")
         input_moeda.classList.add("inp_padrao")
@@ -91,25 +120,43 @@ const renderizar_inputs = () =>{
         img_options.src = "assets/more.png"
         // img_options.classList.add("")
 
-        // grupo_inputs.appendChild(input_moeda)
-        input_teste.appendChild(inp_quantidade)
-        input_teste.appendChild(inp_total)
-        input_teste.appendChild(img_options)
+        input_local.appendChild(input_moeda)
+        input_local.appendChild(inp_quantidade)
+        input_local.appendChild(inp_total)
+        input_local.appendChild(img_options)
 
-        input_teste.appendChild
+        grupo_inputs.appendChild(input_local)
 
     })
     return grupo_inputs
+}
 
+const criar_novo_input = () => {
+    // inputs_criados.push={
+    //     moeda:0,
+    //     price:0,
+    //     qtd:0.5
+    // }
 
+    inputs_criados.push({
+        moeda:0,
+        price:0,
+        qtd:0.5
+    })
 
-
+    // inputs_criados=={
+    //     moeda:0,
+    //     price:0,
+    //     qtd:0.5
+    // }
     
-    //TREVEI AQUI, NÃO SEI AINDA COMO REPASSAR TODO O BLOCO COMO UMA DIV PARA CONSEGUIR AJUSTAR NO CSS
-
-
-
-
+    console.log(inputs_criados)
+    var node = document.querySelector(".fundo_da_calculadora")
+    if (node.parentNode) {
+        node.parentNode.removeChild(node);
+    }
+    
+    renderizar_calculadora()
 }
 
 // const renderizar_inputs = () => {
